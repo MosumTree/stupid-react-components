@@ -1,0 +1,71 @@
+.indexContainer{
+    height: 100%;
+    justify-content:center;
+    align-items:center;
+    display:-webkit-flex;
+}
+.indexTitle{
+    width: 11.5rem;
+    height: 3.5rem;
+    margin: 0 auto;
+    //margin-top: 5rem;
+    color: #000;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 3.5rem;
+    background: url('../index/leaves.png') no-repeat;
+    background-size: 100% 100%;
+}
+.indexContext{
+    background: #eee;
+    width: 14.1rem;
+    height: 11rem;
+    margin: 0 auto;
+    margin-top: 3.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 1rem;
+}
+.element{
+    width: 4.7rem;
+    height: 5.5rem;
+    font-size: 1rem;
+    overflow: hidden;
+    text-decoration: none;
+    color: #000;
+}
+.elementIcon{
+    display: block;
+    width: 100%;
+    height: 4rem;
+    margin: 0;
+    background: url('../index/icon.png') no-repeat center 50%;
+    background-size: 68% 80%;
+}
+.elementText{
+    width: 100%;
+    height: 1.5rem;
+    margin: 0;
+    line-height: 1.5rem;
+    text-align: center;
+    font-size: 0.7rem;
+}
+:global{
+    .page-enter {
+    transform:translate(0,-50%) scaleY(0) ;
+    }
+
+    .page-enter.page-enter-active {
+    transform:translate(0,0%) scaleY(1) ;
+    transition:transform 100ms ease-in-out;
+    }
+
+    .page-leave {
+    transform:translate(0,0%) scaleY(1) ;
+    }
+
+    .page-leave.page-leave-active {
+    transform: translate(0,-50%) scaleY(0) ;
+    transition:transform 100ms ease-in-out;
+    }
+}
