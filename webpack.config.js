@@ -82,6 +82,12 @@ module.exports = {
             ]
         }
         ]
+    },
+    resolve: {
+        extensions: ['.js'],
+        modules: ['node_modules','components','view'],
+        alias: {
+        }
     }
 
 }
