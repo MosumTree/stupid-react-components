@@ -1,0 +1,61 @@
+
+.up_item_wrap{
+
+    
+
+    .up_item_board{
+        text-align: center;
+        font-size: 15px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        z-index: 999;
+        width: 100%;
+        
+        background-color: #EFEFF4;
+        .up_item_fixed_bg{
+            background: rgba(0,0,0,.6);
+            position: absolute;
+            width: 100%;
+            height: 1000px;
+        }
+        .up_item_menu{
+            background: #fff;
+
+            div{
+                padding: 12px;
+                border-bottom: 1px solid #e3e2e7;
+            }
+            .choosed{
+                color: #FF4400;
+        
+            }
+        }
+
+        .up_item_hide_btn{
+            background: #fff;
+            margin-top: 4px;
+            padding: 10px;
+        }
+    }
+}
+
+.filter_mask_wrap{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99998;
+    margin-top: 0px;
+    -webkit-transition: margin-top .5s ease-in-out;
+    -moz-transition: margin-top .5s ease-in-out;
+}
+.hidden{
+    .filter_mask_wrap;
+    margin-top: -1500px;
+    -webkit-transition: margin-top .3s ease-in;
+    -moz-transition: margin-top .3s ease-in;
+}

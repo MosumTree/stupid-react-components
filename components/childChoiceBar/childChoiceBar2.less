@@ -1,0 +1,291 @@
+.barHeight{
+    height: 86px;
+}
+.barHeightMin{
+    height: 45px;
+}
+.blackBack{
+    // position: fixed;
+    // left: 0;
+    // top: 0;
+    width: 100%;
+    min-height: 45px;
+    background: rgba(0,0,0,0.4);
+    z-index: 100000;
+    .fund_child_choice{
+        color: #666;
+        display: table;
+        width: 100%;
+        text-align: center;
+        /*background: #f8f8f8;*/
+        box-sizing: border-box;
+        height: 45px;
+        border-bottom: 1px solid #eee;
+        border-top: 1px solid #eee;
+        //z-index: 99;
+        .choice_list{
+            display: -webkit-box;
+            //z-index: 3;
+            //position: relative;
+        /* border-bottom: 1px solid #e3e2e7;*/
+            background-color: #F5F5F5;
+            height: 45px;
+            
+            .choice_list_item{
+                -webkit-box-flex: 1;
+                text-align: center;
+                line-height: 15px;
+                font-size: 15px;
+                padding: 14px 0;
+                width: 25%;
+                color: #999;
+                display: flex;
+                span {
+                    display: block;
+                    border-right: 1px solid #dfdfdf;
+                    position: relative;
+                    left:11px;
+                }
+                .chosedText{
+                    color: #ff4400;
+                }
+            }
+            @media screen and (max-width:340px){
+                .choice_list_item{
+                    font-size: 12px;
+                }
+            }
+            .choice_list_item:last-child {
+                span {
+                    border-right: 0;
+                }
+            }
+            .expandUp{
+                height: 10px;
+                width: 14px;
+                display: inline-block;
+                // margin-left: 5px;
+                // margin-right: 7px;
+                color: #ccc;
+                background: url('../childChoiceBar/multi_down.svg');
+                background-size: 100% 100%;
+                -webkit-transition: all 0.4s ease;
+                -o-transition: all 0.4s ease;
+                transition: all 0.4s ease;
+            }
+            .expandDown{
+                .expandUp;
+                -webkit-transform: rotate(180deg);
+                -ms-transform: rotate(180deg);
+                -o-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+
+        }
+        .testBar{
+            height: 20px;
+            width: 100%;
+            position: fixed;
+            background: blue;
+            z-index: 1000000;
+        }
+        .recordChoice{
+            width: 100%;
+            height: 40px;
+            box-sizing: border-box;
+            position: relative;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #999;
+            padding:0 15px;
+            span{
+                display: inline-block;
+                height: 22px;
+            }
+        }
+    }
+
+    .bannerList{
+        width: 100%;
+        height: 100%;
+        border-top: 1px solid #eee;
+        box-sizing: border-box;
+    }
+    .bannerListItem{
+        width: 100%;
+        height: 54px;
+        background: #fff;
+        border-bottom: 1px solid #dfdfdf;
+        font-size: 16px;
+        display: flex;
+        padding-left:15px;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 30px;
+        box-sizing: border-box;
+        .hook{
+            background: url('../childChoiceBar/hook.svg') no-repeat;
+            background-size: 100% 100%;
+            width: 20px;
+            height: 14px;
+        }
+        .chosedItem{
+            color: #FF4400;
+        }
+    }
+    .blackBannerListItem{
+        height: 2000px;
+        width: 100%;
+        background: rgba(0,0,0,0.4);
+    }
+}
+.blackBackFixed{
+    .blackBack;
+    position: fixed;
+    left: 0;
+    top: 45px;
+}
+.backScroll{
+    .blackBack;
+    position: fixed;
+    left: 0;
+    top: 45px;
+    height: auto;
+}
+.blackBackFixedApp{
+    .blackBackFixed;
+    top: 0;
+}
+.backScrollApp{
+    .backScroll;
+    top: 0;
+}
+.blackBackIOS{
+    position: -webkit-sticky;  
+    top: 0; // 使用和 Fixed 同样的方式设定位置 
+    width: 100%;
+    min-height: 45px;
+    background: rgba(0,0,0,0.4);
+    box-sizing: border-box;
+    z-index: 100000;
+    .fund_child_choice{
+        color: #666;
+        display: table;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+        height: 45px;
+        border-bottom: 1px solid #eee;
+        border-top: 1px solid #eee;
+        .choice_list{
+            display: -webkit-box;
+            background-color: #F5F5F5;
+            height: 45px;
+            
+            .choice_list_item{
+                -webkit-box-flex: 1;
+                text-align: center;
+                line-height: 15px;
+                font-size: 15px;
+                padding: 14px 0;
+                width: 25%;
+                color: #999;
+                display: flex;
+                span {
+                    display: block;
+                    border-right: 1px solid #dfdfdf;
+                    position: relative;
+                    left:11px;
+                }
+                .chosedText{
+                    color: #ff4400;
+                }
+            }
+            @media screen and (max-width:340px){
+                .choice_list_item{
+                    font-size: 12px;
+                }
+            }
+            .choice_list_item:last-child {
+                span {
+                    border-right: 0;
+                }
+            }
+            .expandUp{
+                height: 10px;
+                width: 14px;
+                display: inline-block;
+                color: #ccc;
+                background: url('../childChoiceBar/multi_down.svg');
+                background-size: 100% 100%;
+                -webkit-transition: all 0.4s ease;
+                -o-transition: all 0.4s ease;
+                transition: all 0.4s ease;
+            }
+            .expandDown{
+                .expandUp;
+                -webkit-transform: rotate(180deg);
+                -ms-transform: rotate(180deg);
+                -o-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+
+        }
+        .recordChoice{
+            width: 100%;
+            height: 40px;
+            box-sizing: border-box;
+            position: relative;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #999;
+            padding:0 15px;
+            span{
+                display: inline-block;
+                height: 22px;
+            }
+        }
+    }
+
+    .bannerList{
+        width: 100%;
+        //background: #fff;
+        //padding-left:15px;
+        height: 100%;
+        border-top: 1px solid #eee;
+        box-sizing: border-box;
+    }
+    .bannerListItem{
+        width: 100%;
+        height: 54px;
+        background: #fff;
+        border-bottom: 1px solid #dfdfdf;
+        box-sizing: border-box;
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-left: 15px;
+        .hook{
+            background: url('../childChoiceBar/hook.svg') no-repeat;
+            background-size: 100% 100%;
+            width: 20px;
+            height: 14px;
+            padding-right: 30px;
+        }
+        .chosedItem{
+            color: #FF4400;
+        }
+    }
+    .blackBannerListItem{
+        height: 2000px;
+        width: 100%;
+        background: rgba(0,0,0,0.4);
+    }
+}

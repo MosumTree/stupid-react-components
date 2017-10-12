@@ -4,19 +4,21 @@ import { BrowserRouter, Route,Link }    from 'react-router-dom'
 import App                              from './view/index/index'
 import ButtonView                       from './view/button/button'
 import AppBarView                       from './view/appBar/appBar'
+import AlertWindow                      from './view/alertWindow/alertWindow'
 import Style                            from './index.less'
-import { bubble as Menu }               from 'react-burger-menu'
+import { slide as Menu }                from 'react-burger-menu'
 import "./resources/css/reset.css";
+//左侧栏样式
 var styles = {
     bmBurgerButton: {
       position: 'fixed',
-      width: '36px',
-      height: '30px',
-      left: '36px',
-      top: '36px'
+      width: '20px',
+      height: '17px',
+      left: '15px',
+      top: '18px'
     },
     bmBurgerBars: {
-      background: '#373a47'
+      background: '#fff'
     },
     bmCrossButton: {
       height: '24px',
@@ -50,7 +52,10 @@ var styles = {
 render ((
     <BrowserRouter> 
         <div>
-            <Menu styles={ styles } isOpen={false}>
+            <div className = {Style.headBar}>
+                Components
+            </div>
+              <Menu styles={ styles } isOpen={false}>
                 <Link className={Style.leftLink} to={'/'}>
                     Index
                 </Link>
@@ -60,11 +65,17 @@ render ((
                 <Link className={Style.leftLink} to={'/appBarView'}>
                     AppBar
                 </Link>
-            </Menu>
+                <Link className={Style.leftLink} to={'/alertWindow'}>
+                    AlertWindow
+                </Link>
+              </Menu>
+            
+            
             <div className={Style.reactContainer}>
                 <Route exact path="/" component={App}/>
                 <Route path="/buttonView" component={ButtonView}/>
                 <Route path="/appBarView" component={AppBarView}/>
+                <Route path="/alertWindow" component={AlertWindow}/>
             </div>
         </div>
     </BrowserRouter>

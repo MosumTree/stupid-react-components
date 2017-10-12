@@ -1,8 +1,6 @@
 import React ,{Component}           from 'react'
 import {Link}                       from 'react-router-dom'
 import Style                        from './index.less'
-import ReactCSSTransitionGroup      from "react-addons-css-transition-group";
-import { slide as Menu }            from 'react-burger-menu'
 export default class extends Component{
     constructor(props){
         super(props);
@@ -11,9 +9,9 @@ export default class extends Component{
         let _this = this;
         return  <div className={Style.indexContainer}>
                     <div>
-                        <div className={Style.indexTitle}>
+                        {/* <div className={Style.indexTitle}>
                             MOSUM
-                        </div>
+                        </div> */}
                     </div>
                 </div>
         
