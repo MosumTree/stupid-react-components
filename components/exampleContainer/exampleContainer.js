@@ -22,7 +22,7 @@ class ExampleContainer extends Component {
 
     render() {
         let _this = this;
-        const { isShow,title,code,description } = this.props;
+        const { isShow,title,code,description,children} = this.props;
         const {isExpand} = _this.state;
         return  isShow ? <div className = {StyleClass.container}>
             <div className = {StyleClass.title}>
@@ -35,7 +35,7 @@ class ExampleContainer extends Component {
             
             </div>
             <div className = {StyleClass.content}>
-            
+                { children ? React.cloneElement( children, {}): null }
             </div>
         </div>: null;
     }
