@@ -17,7 +17,7 @@ class input_button extends Component {
         let tempClass = "";
         switch(buttonType){
             case "white":
-                tempClass = status == 1 ? StyleClass.white_button : StyleClass.white_button;
+                tempClass = status == 1 ? StyleClass.white_button : StyleClass.white_button+ " " + StyleClass.unable;
                 break;
             default:
                 tempClass = status == 1 ? StyleClass.button : StyleClass.button + " " + StyleClass.unable;

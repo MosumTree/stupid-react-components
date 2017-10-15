@@ -12,7 +12,7 @@ export default class extends Component{
         return  <div className={Style.indexContainer}>
                     <div>
                         <div className={Style.indexTitle}>
-                            appBar Page
+                            
                         </div>
                     </div>
                 </div>

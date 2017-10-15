@@ -57,16 +57,22 @@ render ((
             </div>
               <Menu styles={ styles } isOpen={false}>
                 <Link className={Style.leftLink} to={'/'}>
-                    Index
+                    首页
                 </Link>
                 <Link className={Style.leftLink} to={'/buttonView'}>
-                    Button
+                    按钮
                 </Link>
                 <Link className={Style.leftLink} to={'/appBarView'}>
-                    AppBar
+                    标题栏
                 </Link>
                 <Link className={Style.leftLink} to={'/alertWindow'}>
-                    AlertWindow
+                    弹窗
+                </Link>
+                <Link className={Style.leftLink} to={'/alertWindow'}>
+                    其它常用组件
+                </Link>
+                <Link className={Style.leftLink} to={'/alertWindow'}>
+                    复杂组件
                 </Link>
               </Menu>
             
@@ -76,6 +82,15 @@ render ((
                 <Route path="/buttonView" component={ButtonView}/>
                 <Route path="/appBarView" component={AppBarView}/>
                 <Route path="/alertWindow" component={AlertWindow}/>
+            </div>
+            <div className = {Style.bottomText}>
+              <div className = {Style.iconWraper}>
+                <div className = {Style.indexIcon}></div>
+                <strong className = {Style.author}>
+                  Mosum
+                </strong>
+              </div>
+              <p>I don't konw this part what <br/>i should write , i just think this part<br/> should place some English Text to make the page more designalble.</p>
             </div>
         </div>
     </BrowserRouter>
