@@ -1,8 +1,24 @@
 .indexContainer{
     height: 100%;
-    justify-content:center;
-    align-items:center;
-    display:-webkit-flex;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background-image:-webkit-linear-gradient(128deg, #ff9503, #ff6700); 
+    background-image:linear-gradient(128deg,#ff9503,#ff6700);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    .animate{
+        height: 40%;
+        width: 100%;
+        margin-top: 50px;
+    }
+    h1{
+        color: #fff;
+    }
+    
 }
 .indexTitle{
     width: 11.5rem;

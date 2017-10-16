@@ -15,7 +15,11 @@ var styles = {
       width: '20px',
       height: '17px',
       left: '15px',
-      top: '18px'
+      top: '18px',
+      zIndex:9
+    },
+    bmMenuWrap:{
+      zIndex:10
     },
     bmBurgerBars: {
       background: '#fff'
@@ -30,7 +34,8 @@ var styles = {
     bmMenu: {
       background: '#373a47',
       padding: '2.5em 0.7em 0',
-      fontSize: '1.15em'
+      fontSize: '1.15em',
+      zIndex:8
     },
     bmMorphShape: {
       fill: '#373a47'
@@ -40,7 +45,8 @@ var styles = {
       color: '#b8b7ad'
     },
     bmOverlay: {
-      background: 'rgba(0, 0, 0, 0.3)'
+      background: 'rgba(0, 0, 0, 0.3)',
+      zIndex:8
     },
     bmMorphShape:{
       background: '#fff'

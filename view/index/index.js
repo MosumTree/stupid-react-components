@@ -8,11 +8,9 @@ export default class extends Component{
     render(){
         let _this = this;
         return  <div className={Style.indexContainer}>
-                    <div>
-                        {/* <div className={Style.indexTitle}>
-                            MOSUM
-                        </div> */}
+                    <div className={Style.animate}>
                     </div>
+                    <h1 className = {Style.title}>Stupid Components</h1>
                 </div>
         
     }

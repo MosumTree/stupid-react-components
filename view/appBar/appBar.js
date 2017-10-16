@@ -10,6 +10,9 @@ export default class extends Component{
     render(){
         let _this = this;
         return  <div className={Style.indexContainer}>
+                    <div className = {Style.headBar}>
+                        Components
+                    </div>
                     <div>
                         <div className={Style.indexTitle}>
                             
