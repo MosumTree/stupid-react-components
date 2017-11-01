@@ -13,7 +13,7 @@ export default class extends Component{
         super(props);
     }
     componentDidMount(){
-        ShowFilter(true,false)
+        ShowFilter(true,false);
     }
     render(){
         let _this = this;

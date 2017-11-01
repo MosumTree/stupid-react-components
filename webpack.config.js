@@ -83,6 +83,10 @@ module.exports = {
         }
         ]
     },
+    node: {
+        fs: 'empty',
+        net:'empty'
+    },
     resolve: {
         extensions: ['.js'],
         modules: ['node_modules','components','view'],
