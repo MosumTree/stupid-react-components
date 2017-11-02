@@ -11,80 +11,112 @@ export default class extends Component{
         camera.updateProjectionMatrix();
         renderer.setSize( window.innerWidth, window.innerHeight );
     }
-    animate(camera,scene,renderer) {
-        const _this = this;
-        var count = 0;
-        var time = performance.now() / 1000;
-        scene.traverse( function ( child ) {
-            child.rotation.x = count + ( time / 3 );
-            child.rotation.z = count + ( time / 4 );
-            count ++;
-        } );
-        renderer.render( scene, camera );
-        requestAnimationFrame( _this.animate(camera,scene,renderer) );
-    }
     componentDidMount(){
-        var camera, scene, renderer;
-        var container, separation = 100, amountX = 50, amountY = 50,
-        particles, particle;
-        scene = new THREE.Scene();
-        scene.background = new THREE.Color( 0xff6700);
+         /*
+            * 围绕某个 x,y,z轴测试
+            */
+            
+            
+            var renderer,width,height;
+            var stats;
 
-        renderer = new THREE.WebGLRenderer();
-        renderer.setSize( window.innerWidth, window.innerHeight );
-        document.body.appendChild( renderer.domElement );
-        camera = new THREE.PerspectiveCamera( 33, window.innerWidth / window.innerHeight, 0.1, 100 );
-        camera.position.z = 10;
-        scene.background = new THREE.Color( 0, 0, 0 );
-        renderer.setSize( window.innerWidth, window.innerHeight );
-        document.body.appendChild( renderer.domElement );
-        //
-        // particles
-        var PI2 = Math.PI * 2;
-        var material = new THREE.Material( {
+            function initThree() {
+                width = document.body.clientWidth;
+                height = document.body.clientHeight;
+                renderer = new THREE.WebGLRenderer({
+                    antialias : true
+                });
+                renderer.setSize(width, height);
+                document.body.appendChild(renderer.domElement);
+                renderer.setClearColor(0xFF4400, 1.0);
 
-            color: 0xffffff,
-            program: function ( context ) {
-                context.beginPath();
-                context.arc( 0, 0, 0.5, 0, PI2, true );
-                context.fill();
+                // stats = new Stats();
+                // stats.domElement.style.position = 'absolute';
+                // stats.domElement.style.left = '0px';
+                // stats.domElement.style.top = '0px';
+                // document.body.appendChild(stats.domElement);
             }
 
-        } );
-        var geometry = new THREE.Geometry();
-        for ( var i = 0; i < 100; i ++ ) {
-            particle = new THREE.Sprite( material );
-            particle.position.x = Math.random() * 2 - 1;
-            particle.position.y = Math.random() * 2 - 1;
-            particle.position.z = Math.random() * 2 - 1;
-            particle.position.normalize();
-            particle.position.multiplyScalar( Math.random() * 10 + 450 );
-            particle.scale.x = particle.scale.y = 10;
-            scene.add( particle );
-            geometry.vertices.push( particle.position );
-        }
-        // lines
-        var line = new THREE.Line( geometry, new THREE.LineBasicMaterial( { color: 0xffffff, opacity: 0.5 } ) );
-        scene.add( line );
+            var camera;
+            function initCamera() {
+                camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+                camera.position.x = 100;
+                camera.position.y = 300;
+                camera.position.z = 600;
+                camera.up.x = 0;
+                camera.up.y = 1;
+                camera.up.z = 0;
+                camera.lookAt({
+                    x : 0,
+                    y : 0,
+                    z : 0
+                });
+            }
+
+            var scene;
+            function initScene() {
+                scene = new THREE.Scene();
+            }
+
+            var light;
+            function initLight() {
+                light = new THREE.AmbientLight(0xFF0000);
+                light.position.set(100, 100, 200);
+                scene.add(light);
+
+            }
+
+            var cube;
+            var mesh;
+            function initObject() {
+               
+                var geometry = new THREE.BoxGeometry( 100, 100, 100 );
+                
+                for ( var i = 0; i < geometry.faces.length; i += 2 ) {
+
+                    var hex = Math.random() * 0xffffff;
+                    geometry.faces[ i ].color.setHex( hex );
+                    geometry.faces[ i + 1 ].color.setHex( hex );
+
+                }
+                
+                var material = new THREE.MeshBasicMaterial( { vertexColors: THREE.FaceColors} );
+                mesh = new THREE.Mesh( geometry,material);
+                //mesh.position = new THREE.Vector3(0,0,0);
+                scene.add(mesh);
+                
+                
+            }
+            
+            function initGrid(){
+                var helper = new THREE.GridHelper( 1000, 50 ,0x666666,0x666666);
+                scene.add( helper );
+            }
+            
+            function threeStart() {
+                initThree();
+                initCamera();
+                initScene();
+                initLight();
 
 
+                initObject();
+                initGrid();
+                
+                animation();
 
+            }
 
-        //
-        window.addEventListener( 'resize', this.onWindowResize.bind(camera,renderer), false );
-        var animate = function () {
-            var count = 0;
-            var time = performance.now() / 1000;
-            scene.traverse( function ( child ) {
-                child.rotation.x = count + ( time / 3 );
-                child.rotation.z = count + ( time / 4 );
-                count ++;
-            } );
-            renderer.render( scene, camera );
-            requestAnimationFrame( animate );
-        };
+            // 帧循环、游戏循环
+            function animation()
+            {
+                mesh.rotation.y +=0.01;
+                mesh.rotation.z +=0.01;
+                renderer.render(scene, camera);
+                requestAnimationFrame(animation);
 
-        animate();
+            }
+        threeStart();
     }
     render(){
         let _this = this;
