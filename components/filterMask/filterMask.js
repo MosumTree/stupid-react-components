@@ -1,16 +1,15 @@
 import React, { Component }     from 'react';
 import StyleClass               from './filterMask.less';
 import PropTypes                from 'prop-types';
-import ReactCSSTransitionGroup  from 'react-addons-css-transition-group';
-/* 
-组件为弹出式的过滤器，接收显示，隐藏与展开，方向，列表数据，点击的回调函数
-*/
+
+
 class FilterMask extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            filterMaskShow : false
+            filterMaskShow : false,
+            chosenItem:0
 		};
     };
 
@@ -23,6 +22,9 @@ class FilterMask extends Component {
     }
     test(key){
         this.props.callback(key);
+        this.setState({
+            chosenItem:key
+        })
     }
     showMask(){
         let _this = this;
@@ -34,15 +36,21 @@ class FilterMask extends Component {
 
     render() {
 		const _this = this;
-        const { isShow,listDic } = this.props;
+        const { isShow,listDic,chosenItemName } = this.props;
 
-		let{ filterMaskShow } = this.state;
+
+
+		let{ filterMaskShow ,chosenItem} = this.state;
 		let filterMoreChoiceDicArray = [];
         
-		for (let key in listDic){
 
-			filterMoreChoiceDicArray.push(<div key = { key } onClick = {()=>_this.test(key)}>{listDic[key][2]}</div>);
-            
+		for (let key in listDic){
+            if (listDic[key][2] == chosenItemName) {
+                filterMoreChoiceDicArray.push(<div className = {StyleClass.up_item_menu_title} key = { key } onClick = {()=>_this.test(key)}>{listDic[key][2]}</div>);
+            }
+            else{
+			    filterMoreChoiceDicArray.push(<div key = { key } onClick = {()=>_this.test(key)}>{listDic[key][2]}</div>);
+            }
 		}
         
 		let moreFilter;
@@ -50,22 +58,27 @@ class FilterMask extends Component {
 		moreFilter =    <div className={StyleClass.up_item_wrap}>
                             
                             <div className={StyleClass.up_item_board}>
-                                <div className={StyleClass.up_item_menu} >				
-                                    { filterMoreChoiceDicArray.map((item,i)=> item) }
-                                </div>
-                                <div className={StyleClass.up_item_hide_btn} onClick={(e)=>
-                                    {
-                                        e.stopPropagation();
-                                        _this.showMask()
-                                    }
-                                }>取消</div>
-                                <div className={StyleClass.up_item_fixed_bg} onClick={(e)=>
+                                
+                                <div className={filterMaskShow ?StyleClass.bgShow:StyleClass.up_item_fixed_bg} onClick={
+                                    filterMaskShow ?(e)=>
                                         {
                                             e.stopPropagation();
                                             _this.showMask()
                                         }
-                                    }>
+                                    :()=>false}>
                                 </div>
+                                <div className={StyleClass.up_item_menu} >		
+                                    { filterMoreChoiceDicArray.map((item,i)=> item) }
+                                    <p className = {StyleClass.divide}></p>
+                                    <p className={StyleClass.up_item_hide_btn} onClick={(e)=>
+                                    {
+                                        e.stopPropagation();
+                                        _this.showMask()
+                                    }
+                                    }>取消</p>
+                                </div>
+                                
+                                
                             </div>
                         </div> 
 
@@ -81,15 +94,17 @@ class FilterMask extends Component {
         isShow:         PropTypes.bool,
         resultData:     PropTypes.array,
         listDic:        PropTypes.object,
-        direction:      PropTypes.string
+        direction:      PropTypes.string,
+        chosenItemName: PropTypes.string
 
     };
 
     FilterMask.defaultProps = {
         isShow:         true,
         resultData:     null,
-        listDic:        ["近一个月","近3个月","近1年","近3年"],
-        direction:      'down'
+        listDic:        null,
+        direction:      'down',
+        chosenItemName: ''
     };
 
 

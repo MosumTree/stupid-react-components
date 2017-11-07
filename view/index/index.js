@@ -2,6 +2,7 @@ import React ,{Component}           from 'react'
 import {Link}                       from 'react-router-dom'
 import Style                        from './index.less'
 import * as THREE                   from 'three';
+//import {Stats}                        from 'stats';
 export default class extends Component{
     constructor(props){
         super(props);
@@ -12,7 +13,7 @@ export default class extends Component{
         renderer.setSize( window.innerWidth, window.innerHeight );
     }
     componentDidMount(){
-         /*
+         /* 
             * 围绕某个 x,y,z轴测试
             */
             
@@ -27,9 +28,10 @@ export default class extends Component{
                     antialias : true
                 });
                 renderer.setSize(width, height);
-                document.body.appendChild(renderer.domElement);
-                renderer.setClearColor(0xFF4400, 1.0);
-
+                document.getElementById('index').appendChild(renderer.domElement);
+                //document.body.appendChild(renderer.domElement);
+                renderer.setClearColor(0xFF4400, 1);
+                
                 // stats = new Stats();
                 // stats.domElement.style.position = 'absolute';
                 // stats.domElement.style.left = '0px';
@@ -120,7 +122,7 @@ export default class extends Component{
     }
     render(){
         let _this = this;
-        return  <div className={Style.indexContainer}>
+        return  <div className={Style.indexContainer} id = "index">
                     <div className={Style.animate}>
                     </div>
                     <h1 className = {Style.title}>Stupid Components</h1>

@@ -14,7 +14,8 @@ class ShowFilterMask extends Component{
             show: false,
             listDic: null,
             isExpand: false,
-            callback:()=>false
+            callback:()=>false,
+            chosenItemName:''
         }
         that = this
     }
@@ -32,16 +33,10 @@ class ShowFilterMask extends Component{
 
     render() {
         const _this = this;
-        const {callback} = _this.state;
-        const filterChoiceDic = {
-			0:['M','月','近1月'],
-			1:['Q','季','近3月'],
-			2:['HY','半年','近6月'],
-			3:['Y','年','近1年'],
-			4:['','更多','更多']
-		}	
+        const {callback,listDic,chosenItemName} = _this.state;
+
         return(
-            <FilterMask isShow={this.state.show} isExpand = {this.state.isExpand} listDic = {filterChoiceDic} callback = {callback.bind(_this)}></FilterMask>
+            <FilterMask isShow={this.state.show} isExpand = {this.state.isExpand} listDic = {listDic} callback = {callback.bind(_this)} chosenItemName = {chosenItemName}></FilterMask>
         )
     }
 }
@@ -49,7 +44,7 @@ class ShowFilterMask extends Component{
 ReactDOM.render(<ShowFilterMask />, container)
 
 
-export default function ShowFilterMaskControl (isShow,isExpand,listDic,callback) {
+export default function ShowFilterMaskControl (isShow,isExpand,listDic,callback,chosenItemName) {
 
     let callback1 = function(key){
         that.closeView();
@@ -60,6 +55,7 @@ export default function ShowFilterMaskControl (isShow,isExpand,listDic,callback)
         show: isShow || false,
         isExpand: isExpand,
         listDic: listDic,
-        callback:callback1
+        callback:callback1,
+        chosenItemName:chosenItemName
     })
 }

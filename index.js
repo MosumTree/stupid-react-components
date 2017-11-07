@@ -5,6 +5,7 @@ import App                              from './view/index/index'
 import ButtonView                       from './view/button/button'
 import AppBarView                       from './view/appBar/appBar'
 import AlertWindow                      from './view/alertWindow/alertWindow'
+import WorkComponent                    from './view/workComponent/workComponent'
 import Style                            from './index.less'
 import { slide as Menu }                from 'react-burger-menu'
 import "./resources/css/reset.css";
@@ -74,12 +75,17 @@ render ((
                 <Link className={Style.leftLink} to={'/alertWindow'}>
                     弹窗
                 </Link>
-                <Link className={Style.leftLink} to={'/alertWindow'}>
-                    其它常用组件
+                <Link className={Style.leftLink} to={'/workComponent'}>
+                    业务组件
                 </Link>
                 <Link className={Style.leftLink} to={'/alertWindow'}>
                     复杂组件
                 </Link>
+                <Link className={Style.leftLink} to={'/workComponent'}>
+                    其它常用组件
+                </Link>
+                
+                
               </Menu>
             
             
@@ -88,6 +94,7 @@ render ((
                 <Route path="/buttonView" component={ButtonView}/>
                 <Route path="/appBarView" component={AppBarView}/>
                 <Route path="/alertWindow" component={AlertWindow}/>
+                <Route path="/workComponent" component={WorkComponent}/>
             </div>
             <div className = {Style.bottomText}>
               <div className = {Style.iconWraper}>
@@ -96,7 +103,7 @@ render ((
                   Mosum
                 </strong>
               </div>
-              <p>I don't konw this part what <br/>i should write , i just think this part<br/> should place some English Text to make the page more designalble.</p>
+              <p>I don't konw this part what <br/>i should write , i just think this part<br/> should place some English Text to make the page more designable.</p>
             </div>
         </div>
     </BrowserRouter>

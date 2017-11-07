@@ -20,6 +20,14 @@ export default class extends Component{
         let alertList = [["isShow","bool","true","控制组件显示"],["showContent","string","No Message","弹窗正文"],["closeView","function","","按钮回调事件"]]
         let confirmList = [["isShow","bool","true","控制组件显示"],["showContent","string","No Message","弹窗正文"],["closeView","function","","按钮回调事件"],["isShow","bool","true","控制组件显示"],["showContent","string","No Message","弹窗正文"],["closeView","function","","按钮回调事件"]]
         let loadingList = [["isShow","bool","true","控制组件显示"],["showContent","string","加载中","弹窗正文"]]
+        //过滤器列表
+		let filterChoiceDic = {
+            0:['C','估','估算涨幅'],
+            1:['D','日','日涨幅'],
+            2:['M','月','近1月'],
+            3:['Q','季','近3月'],
+            4:['Y','年','近1年'],
+        }
         return  <div className={Style.indexContainer}>
                     <div className={Style.head}> 
                         <h4 className={Style.indexTitle}>
@@ -47,7 +55,7 @@ export default class extends Component{
                     <ExampleContainer title = {"FilterMask"}>
                     <div className = {Style.componentContainer}>
                         <ExampleParameter tableList = {alertList}/>
-                        <ExampleButton clickCallback = {()=>ShowFilter(true,true)}/>
+                        <ExampleButton clickCallback = {()=>ShowFilter(true,true,filterChoiceDic)}/>
                             </div>
                     </ExampleContainer>
                     <ExampleContainer title = {"LoadingMask"}>
