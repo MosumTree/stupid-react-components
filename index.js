@@ -1,6 +1,6 @@
 import React                            from 'react'
 import {render}                         from 'react-dom'
-import { BrowserRouter, Route,Link }    from 'react-router-dom'
+import { BrowserRouter,HashRouter,Route,Link }    from 'react-router-dom'
 import App                              from './view/index/index'
 import ButtonView                       from './view/button/button'
 import AppBarView                       from './view/appBar/appBar'
@@ -57,7 +57,7 @@ var styles = {
     return state.isOpen;
   };
 render ((
-    <BrowserRouter> 
+    <HashRouter> 
         <div>
             <div className = {Style.headBar}>
                 Components
@@ -106,5 +106,5 @@ render ((
               <p>I don't konw this part what <br/>i should write , i just think this part<br/> should place some English Text to make the page more designable.</p>
             </div>
         </div>
-    </BrowserRouter>
+    </HashRouter>
 ),document.getElementById('app'))
