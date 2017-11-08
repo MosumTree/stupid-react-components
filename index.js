@@ -103,7 +103,7 @@ render ((
                   Mosum
                 </strong>
               </div>
-              <p>I don't konw this part what <br/>i should write , i just think this part<br/> should place some English Text to make the page more designable.</p>
+              <p>I don't know this part what <br/>i should write , i just think this part<br/> should place some English Text to make the page more designable.</p>
             </div>
         </div>
     </HashRouter>
