@@ -72,7 +72,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js'],
-        modules: ['node_modules','components','view'],
+        modules: ['node_modules','components','view','complexComponent'],
         alias: {
         }
     }

@@ -6,9 +6,11 @@ import ButtonView                       from './view/button/button'
 import AppBarView                       from './view/appBar/appBar'
 import AlertWindow                      from './view/alertWindow/alertWindow'
 import WorkComponent                    from './view/workComponent/workComponent'
+import ChoiceBar                        from './view/complexComponent/choiceBar/choiceBar'
 import Style                            from './index.less'
 import { slide as Menu }                from 'react-burger-menu'
 import "./resources/css/reset.css";
+let expandFlag = false;
 //左侧栏样式
 var styles = {
     bmBurgerButton: {
@@ -56,13 +58,28 @@ var styles = {
   var isMenuOpen = function(state) {
     return state.isOpen;
   };
-render ((
-    <HashRouter> 
+  var StupidComponents=React.createClass({
+    getInitialState:function(){
+      return{
+        expandFlag: false
+      }
+    },
+    changeExpand:function(){
+      let expand = this.state.expandFlag;
+      event.stopPropagation();
+      event.preventDefault();
+      this.setState({
+        expandFlag:!expand
+      });
+    },
+    render:function(){
+        const _this = this;
+        return <HashRouter> 
         <div>
             <div className = {Style.headBar}>
                 Components
             </div>
-              <Menu styles={ styles } isOpen={false}>
+              <Menu styles={ styles } isOpen={_this.isMenuOpen}>
                 <Link className={Style.leftLink} to={'/'}>
                     首页
                 </Link>
@@ -78,9 +95,17 @@ render ((
                 <Link className={Style.leftLink} to={'/workComponent'}>
                     业务组件
                 </Link>
-                <Link className={Style.leftLink} to={'/alertWindow'}>
+                <p className={Style.leftLink} onClick = {_this.changeExpand} >
                     复杂组件
-                </Link>
+                </p>
+                <div className = {_this.state.expandFlag?Style.linkItem:Style.hidden}>
+                  <Link className={Style.leftSubLink} to={'/complexComponent/choiceBar'}>
+                      粘附型选择栏
+                  </Link>
+                  <Link className={Style.leftSubLink} to={'/workComponent'}>
+                      下拉刷新
+                  </Link>
+                </div>
                 <Link className={Style.leftLink} to={'/workComponent'}>
                     其它常用组件
                 </Link>
@@ -95,6 +120,7 @@ render ((
                 <Route path="/appBarView" component={AppBarView}/>
                 <Route path="/alertWindow" component={AlertWindow}/>
                 <Route path="/workComponent" component={WorkComponent}/>
+                <Route path="/complexComponent/choiceBar" component={ChoiceBar}/>
             </div>
             <div className = {Style.bottomText}>
               <div className = {Style.iconWraper}>
@@ -107,4 +133,6 @@ render ((
             </div>
         </div>
     </HashRouter>
-),document.getElementById('app'))
+    }
+  })
+  render(<StupidComponents/>,document.getElementById('app'))
