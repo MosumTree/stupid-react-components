@@ -6,7 +6,7 @@ import ButtonView                       from './view/button/button'
 import AppBarView                       from './view/appBar/appBar'
 import AlertWindow                      from './view/alertWindow/alertWindow'
 import WorkComponent                    from './view/workComponent/workComponent'
-import ChoiceBar                        from './view/complexComponent/choiceBar/choiceBar'
+import ChoiceBar                        from './view/complexComponent/choiceBar'
 import Style                            from './index.less'
 import { slide as Menu }                from 'react-burger-menu'
 import "./resources/css/reset.css";
